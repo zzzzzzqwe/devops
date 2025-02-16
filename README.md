@@ -190,7 +190,7 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
 
    ![image](screenshots/Screenshot_28.png)
 
-   ## Ответы на контрольные вопросы
+# Ответы на контрольные вопросы
 **Каким образом можно скачать файл в консоли при помощи утилиты wget?**
    Для скачивания файла в консоли с помощью wget используется команда:
    wget "url"

@@ -152,7 +152,7 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
    ```
    ![image](screenshots/Screenshot_20.png)
 
-   ### Запуск и тестирование
+   ## Запуск и тестирование
    Проверяю версию системы:
    ```sh
    uname -a
@@ -170,6 +170,7 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
   
    Оба сайта доступны, продолжаю настройку Drupal
    На этом этапе я столкнулся с проблемной версией php, что я упоминал выше, а так-же с отсутствием директории ***sites/default/files***, которую исправил следующим образом:
+   
    ![image](screenshots/Screenshot_24.png)
 
    ![image](screenshots/Screenshot_22.png)

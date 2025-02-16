@@ -98,7 +98,6 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
    mv phpMyAdmin-5.2.2-all-languages /var/www/phpmyadmin
    mv drupal-11.1.1 /var/www/drupal
    ```
- ![image](screenshots/Screenshot_15.png)
 
  ### Настройка базы данных
 

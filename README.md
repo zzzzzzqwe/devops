@@ -101,8 +101,8 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
    ```sh
    mysql -u root
    CREATE DATABASE drupal_db;
-   CREATE USER 'daniil'@'localhost' IDENTIFIED BY 'password';
-   GRANT ALL PRIVILEGES ON drupal_db.* TO 'daniil'@'localhost';
+   CREATE USER 'gachayev'@'localhost' IDENTIFIED BY 'password';
+   GRANT ALL PRIVILEGES ON drupal_db.* TO 'gachayev'@'localhost';
    FLUSH PRIVILEGES;
    EXIT;
    ```
@@ -146,4 +146,37 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
    /usr/sbin/a2ensite 02-drupal
    ```
    ![image](screenshots/Screenshot_20.png)
+
+   ### Запуск и тестирование
+1. Проверяю версию системы:
+   ```sh
+   uname -a
+   ```
+   
+   ![image](screenshots/Screenshot_29.png)
+   
+3. Перезапускаю Apache:
+   ```sh
+   systemctl restart apache2
+   ```
+4. Проверка доступности сайтов в браузере:
+   - `http://drupal.localhost:1080`
+   - `http://phpmyadmin.localhost:1080`
+  
+   Оба сайта доступны, продолжаю настройку Drupal
+   На этом этапе я столкнулся с проблемной версией php, что я упоминал выше, а так-же с отсутствием директории ***sites/default/files***, которую исправил следующим образом:
+   ![image](screenshots/Screenshot_24.png)
+
+   ![image](screenshots/Screenshot_22.png)
+
+   ![image](screenshots/Screenshot_23.png)
+
+   ![image](screenshots/Screenshot_25.png)
+
+   ![image](screenshots/Screenshot_26.png)
+
+   ![image](screenshots/Screenshot_27.png)
+
+   ![image](screenshots/Screenshot_28.png)
+
    

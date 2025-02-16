@@ -208,9 +208,11 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
 
    Открыть конфигурационный файл:
 
-      ```
-      sudo nano /etc/mysql/mariadb.conf.d
-      ```
+```
+
+ sudo nano /etc/mysql/mariadb.conf.d
+
+```
 
    Найти строку port и заменить её
 

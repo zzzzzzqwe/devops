@@ -157,6 +157,7 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
    ```sh
    uname -a
    ```
+   Команда uname -a выводит информацию о системе, такую как: имя ядра, имя хоста, версия ядра Линукс, архитектура процессора и тд
    
    ![image](screenshots/Screenshot_29.png)
    

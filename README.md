@@ -173,6 +173,7 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
    - `http://phpmyadmin.localhost:1080`
   
    Оба сайта доступны, продолжаю настройку Drupal
+
    На этом этапе я столкнулся с проблемной версией php, что я упоминал выше, а так-же с отсутствием директории ***sites/default/files***, которую исправил следующим образом:
    
    ![image](screenshots/Screenshot_24.png)

@@ -153,18 +153,18 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
    ![image](screenshots/Screenshot_20.png)
 
    ### Запуск и тестирование
-1.  Проверяю версию системы:
+   Проверяю версию системы:
    ```sh
    uname -a
    ```
    
    ![image](screenshots/Screenshot_29.png)
    
-2. Перезапускаю Apache:
+   Перезапускаю Apache:
    ```sh
    systemctl restart apache2
    ```
-3. Проверка доступности сайтов в браузере:
+   Проверка доступности сайтов в браузере:
    - `http://drupal.localhost:1080`
    - `http://phpmyadmin.localhost:1080`
   

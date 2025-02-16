@@ -129,7 +129,7 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
       ```
       ![image](screenshots/Screenshot_18.png)
      
-   - `nano /etc/apache2/sites-available/02-drupal.conf`
+     `nano /etc/apache2/sites-available/02-drupal.conf`
      
       Вписываю:
       ```
@@ -141,6 +141,7 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
          ErrorLog "/var/log/apache2/drupal.localhost-error.log"
          CustomLog "/var/log/apache2/drupal.localhost-access.log" common
       </VirtualHost>
+      
       ```
       ![image](screenshots/Screenshot_19.png)
 
@@ -152,18 +153,18 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
    ![image](screenshots/Screenshot_20.png)
 
    ### Запуск и тестирование
-1. Проверяю версию системы:
+1.  Проверяю версию системы:
    ```sh
    uname -a
    ```
    
    ![image](screenshots/Screenshot_29.png)
    
-3. Перезапускаю Apache:
+2. Перезапускаю Apache:
    ```sh
    systemctl restart apache2
    ```
-4. Проверка доступности сайтов в браузере:
+3. Проверка доступности сайтов в браузере:
    - `http://drupal.localhost:1080`
    - `http://phpmyadmin.localhost:1080`
   

@@ -29,7 +29,7 @@
    - Хостовое имя: **debian.localhost**
    - Имя пользователя: **user**
    - Пароль пользователя: **password**
-   - 
+     
      ![image](screenshots/Screenshot_2.png)
      
 5. Запуск виртуальной машины
@@ -38,7 +38,7 @@
    qemu-system-x86_64 -hda debian.qcow2 -m 2G -smp 2 \ -device e1000,netdev=net0 -netdev user,id=net0,hostfwd=tcp::1080-:80,hostfwd=tcp::1022-:22
    ```
 ## Установка LAMP
-   1. Выполняю следующие команды:
+1. Выполняю следующие команды:
  ```
 su
 apt update -y
@@ -57,3 +57,93 @@ apt install -y apache2 php libapache2-mod-php php-mysql mariadb-server mariadb-c
 **mariadb-server** — серверная часть системы управления базами данных MariaDB, которая является форком MySQL и обеспечивает хранение, управление и обработку данных.
 
 **mariadb-client** — клиент для взаимодействия с MariaDB, позволяющий подключаться к серверу базы данных и выполнять запросы через командную строку.
+На этом этапе я столкнулся с проблемами, связанными с отсутствием источников в файле sources.list, после их изменения все пакеты были скачаны
+Также в будущем оказалось что устанавливаемая версия php слишком стара для Drupal, поэтому я также установил ее отдельно по гайду из интернета
+
+![image](screenshots/Screenshot_4.png)
+
+### Установка PhpMyAdmin и CMS Drupal
+1. Скачал с помощью следующих команд PhpMyAdmin и CMS Drupal:
+   ```sh
+   wget https://files.phpmyadmin.net/phpMyAdmin/5.2.2/phpMyAdmin-5.2.2-all-languages.zip
+   wget https://ftp.drupal.org/files/projects/drupal-11.1.1.zip
+   ```
+
+   ![image](screenshots/Screenshot_7.png)
+
+   ![image](screenshots/Screenshot_8.png)
+   
+3. Проверка наличия файлов:
+   ```sh
+   ls -l
+   ```
+   ![image](screenshots/Screenshot_9.png)
+
+## Распаковка и перемещение файлов:
+   ```sh
+   unzip phpMyAdmin-5.2.2-all-languages.zip
+   unzip drupal-11.1.1.zip
+   ```
+![image](screenshots/Screenshot_10.png)
+
+![image](screenshots/Screenshot_11.png)
+   
+   ```sh
+   mkdir /var/www
+   mv phpMyAdmin-5.2.2-all-languages /var/www/phpmyadmin
+   mv drupal-11.1.1 /var/www/drupal
+   ```
+ ![image](screenshots/Screenshot_15.png)
+
+ ### Настройка базы данных
+
+   Создаю через командную строку базу данных drupal_db и пользователя базы данных с названием ***gachayev***
+   ```sh
+   mysql -u root
+   CREATE DATABASE drupal_db;
+   CREATE USER 'daniil'@'localhost' IDENTIFIED BY 'password';
+   GRANT ALL PRIVILEGES ON drupal_db.* TO 'daniil'@'localhost';
+   FLUSH PRIVILEGES;
+   EXIT;
+   ```
+![image](screenshots/Screenshot_16.png)
+
+### Настройка виртуальных хостов Apache
+1. Создаю файлы:
+   - `nano /etc/apache2/sites-available/01-phpmyadmin.conf`
+
+     Вписываю:
+      ```
+      <VirtualHost *:80>
+         ServerAdmin webmaster@localhost
+         DocumentRoot "/var/www/phpmyadmin"
+         ServerName phpmyadmin.localhost
+         ServerAlias www.phpmyadmin.localhost
+         ErrorLog "/var/log/apache2/phpmyadmin.localhost-error.log"
+         CustomLog "/var/log/apache2/phpmyadmin.localhost-access.log" common
+      </VirtualHost>
+      ```
+      ![image](screenshots/Screenshot_18.png)
+     
+   - `nano /etc/apache2/sites-available/02-drupal.conf`
+     
+      Вписываю:
+      ```
+      <VirtualHost *:80>
+         ServerAdmin webmaster@localhost
+         DocumentRoot "/var/www/drupal"
+         ServerName drupal.localhost
+         ServerAlias www.drupal.localhost
+         ErrorLog "/var/log/apache2/drupal.localhost-error.log"
+         CustomLog "/var/log/apache2/drupal.localhost-access.log" common
+      </VirtualHost>
+      ```
+      ![image](screenshots/Screenshot_19.png)
+
+   Далее регистрирую конфигурации и добавляю их в *hosts*:
+   ```sh
+   /usr/sbin/a2ensite 01-phpmyadmin
+   /usr/sbin/a2ensite 02-drupal
+   ```
+   ![image](screenshots/Screenshot_20.png)
+   
